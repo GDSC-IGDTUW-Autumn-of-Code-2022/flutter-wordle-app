@@ -18,9 +18,4 @@ For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
-Screenshot
-
-
-## Issues to be resolved
-1. Flipping of the cards
-2. Change in app color theme
+![](images/Screenshot_20221102-121834.png)
