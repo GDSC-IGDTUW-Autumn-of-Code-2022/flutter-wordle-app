@@ -28,7 +28,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   equatable: ^2.0.3
-
+  google_fonts: ^3.0.1
 
 
   # The following adds the Cupertino Icons font to your application.
