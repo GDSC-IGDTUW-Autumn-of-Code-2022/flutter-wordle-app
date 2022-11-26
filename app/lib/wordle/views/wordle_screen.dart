@@ -6,8 +6,10 @@ import 'package:wordle/wordle/models/letter_model.dart';
 import 'package:wordle/wordle/models/word_model.dart';
 import 'package:wordle/wordle/widgets/board.dart';
 import 'package:wordle/wordle/widgets/keyboard.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 enum GameStatus { playing, submitting, lost, won }
+
 const Color correctColor = Color(0xFF538D4E);
 const Color inwordColor = Color(0xFFB49F3A);
 const Color notinwordColor = Color(0xFF3A3A3C);
@@ -46,10 +48,12 @@ class _WordleScreenState extends State<WordleScreen> {
         centerTitle: true,
         backgroundColor: Colors.black,
         elevation: 0,
-        title: const Text(
+        title: Text(
           "WORDLE",
-          style: TextStyle(
-              fontSize: 36, fontWeight: FontWeight.bold, letterSpacing: 4),
+          style: GoogleFonts.secularOne(
+            textStyle: const TextStyle(
+                fontSize: 36, fontWeight: FontWeight.bold, letterSpacing: 4),
+          ),
         ),
       ),
       body: Column(
