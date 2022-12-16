@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:wordle/splash.dart';
 
 import 'package:wordle/wordle/views/wordle_screen.dart';
 
@@ -16,7 +15,7 @@ class App extends StatelessWidget {
       title: "WORDLE",
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(scaffoldBackgroundColor: Colors.black),
-      home: Splash(),
+      home: const WordleScreen(),
     );
   }
 }

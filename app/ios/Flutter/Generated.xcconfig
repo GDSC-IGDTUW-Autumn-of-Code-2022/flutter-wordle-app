@@ -1,6 +1,6 @@
 // This is a generated file; do not edit or check into version control.
-FLUTTER_ROOT=C:\src\flutter\flutter\flutter
-FLUTTER_APPLICATION_PATH=C:\Users\seema\OneDrive\Desktop\AOC\flutter-wordle-app\app
+FLUTTER_ROOT=C:\flutter
+FLUTTER_APPLICATION_PATH=C:\Users\Hp\OneDrive\Documents\Mansi\flutter\flutter-wordle-app\app
 COCOAPODS_PARALLEL_CODE_SIGN=true
 FLUTTER_TARGET=lib\main.dart
 FLUTTER_BUILD_DIR=build
