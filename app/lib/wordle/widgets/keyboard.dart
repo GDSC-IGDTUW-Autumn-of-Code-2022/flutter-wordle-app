@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:stacked/stacked.dart';
 import 'package:wordle/wordle/models/letter_model.dart';
+
+import 'package:wordle/ui/multiple_themes/multiple_themes_viewmodel.dart';
 
 const _qwerty = [
   ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
@@ -23,7 +26,9 @@ class Keyboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    var theme = Theme.of(context);
+    return ViewModelBuilder<MultipleThemesViewModel>.reactive(
+        builder: (context, model, child) => Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: _qwerty
           .map(
@@ -49,13 +54,14 @@ class Keyboard extends StatelessWidget {
                     letter: letter,
                     backgroundColor: letterKey != Letter.empty()
                         ? letterKey.backgroundColor
-                        : const Color.fromARGB(255, 88, 4, 109),
+                        : theme.accentColor,
                   );
                 },
               ).toList(),
             ),
           )
           .toList(),
+        ), viewModelBuilder: () => MultipleThemesViewModel(),
     );
   }
 }

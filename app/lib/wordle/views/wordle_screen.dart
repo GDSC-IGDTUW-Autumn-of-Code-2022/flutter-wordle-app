@@ -6,7 +6,9 @@ import 'package:wordle/wordle/models/letter_model.dart';
 import 'package:wordle/wordle/models/word_model.dart';
 import 'package:wordle/wordle/widgets/board.dart';
 import 'package:wordle/wordle/widgets/keyboard.dart';
-
+import 'package:stacked/stacked.dart';
+import 'package:stacked_themes/stacked_themes.dart';
+import 'package:wordle/ui/multiple_themes/multiple_themes_viewmodel.dart';
 enum GameStatus { playing, submitting, lost, won }
 const Color correctColor = Color(0xFF538D4E);
 const Color inwordColor = Color(0xFFB49F3A);
@@ -39,32 +41,47 @@ class _WordleScreenState extends State<WordleScreen> {
   Word _solution = Word.fromString(
       fiveLetterWords[Random().nextInt(fiveLetterWords.length)].toUpperCase());
 
+  // Color textColor(List<ThemeModel> themes){
+  //
+  // }
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: Colors.black,
-        elevation: 0,
-        title: const Text(
-          "WORDLE",
-          style: TextStyle(
-              fontSize: 36, fontWeight: FontWeight.bold, letterSpacing: 4),
-        ),
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Board(board: _board, flipCardKeys: _flipCardKeys),
-          const SizedBox(height: 80),
-          Keyboard(
-            onKeyTapped: _onKeyTapped,
-            onDeleteTapped: _onDeleteTapped,
-            onEnterTapped: _onEnterTapped,
-            letters: _keyboardLetters,
+    var theme = Theme.of(context);
+    return ViewModelBuilder<MultipleThemesViewModel>.reactive(
+      builder: (context, model, child) => Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          backgroundColor: theme.accentColor,
+          elevation: 0,
+          title: const Text(
+            "WORDLE",
+            style: TextStyle(
+                fontSize: 36, fontWeight: FontWeight.bold //removed letterspacing: 4
+              ),
           ),
-        ],
-      ),
+          leading: IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, 'settings');
+              },
+              icon: const Icon(Icons.settings),
+              color: Colors.white54
+          )
+        ),
+        backgroundColor: theme.backgroundColor,
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Board(board: _board, flipCardKeys: _flipCardKeys),
+            const SizedBox(height: 80),
+            Keyboard(
+              onKeyTapped: _onKeyTapped,
+              onDeleteTapped: _onDeleteTapped,
+              onEnterTapped: _onEnterTapped,
+              letters: _keyboardLetters,
+            ),
+          ],
+        ),
+      ), viewModelBuilder: () => MultipleThemesViewModel(),
     );
   }
 
